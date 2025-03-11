@@ -9,8 +9,7 @@ import { connectDB } from "./insfastructure/db.js";
 const app = express();
 app.use(express.json());
 app.use(cors({
-  origin: ['http://localhost:5173', 'https://uniplanner-frontend.netlify.app'],
-  credentials: true
+  origin: "https://uniplanner-frontend.netlify.app"
 }));
 
 app.use("/api/Users", UserRoute);
