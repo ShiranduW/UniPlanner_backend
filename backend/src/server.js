@@ -8,7 +8,10 @@ import { connectDB } from "./insfastructure/db.js";
 
 const app = express();
 app.use(express.json());
-app.use(cors());
+app.use(cors({
+  origin: ['http://localhost:5173', 'https://uniplanner-frontend.netlify.app'],
+  credentials: true
+}));
 
 app.use("/api/Users", UserRoute);
 app.use("/api/Courses", CourseRoute);
@@ -16,4 +19,5 @@ app.use("/api/Schedules", ScheduleRoute);
 app.use("/api/timetable", TimeTableRoute);
 
 connectDB();
-app.listen(8000, () => console.log(`Server running on port ${8000}`));
+const PORT = process.env.PORT || 8000;
+app.listen(PORT, () => console.log(`Server running on port ${PORT}`));
