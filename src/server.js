@@ -5,30 +5,12 @@ import { CourseRoute } from "./api/courses.js";
 import { ScheduleRoute } from "./api/schedules.js";
 import { TimeTableRoute } from "./api/timetable.js";
 import { connectDB } from "./insfastructure/db.js";
-import helmet from "helmet";
 
 const app = express();
 app.use(express.json());
 app.use(cors({
   origin: "https://uniplanner-frontend.netlify.app"
 }));
-
-// Add CSP Headers in Express
-
-
-app.use(
-  helmet({
-    contentSecurityPolicy: {
-      directives: {
-        defaultSrc: ["'self'"],
-        fontSrc: ["'self'", "https://fonts.gstatic.com", "data:"],
-        styleSrc: ["'self'", "'unsafe-inline'", "https://fonts.googleapis.com"],
-        scriptSrc: ["'self'"],
-      },
-    },
-  })
-);
-
 
 app.use("/api/Users", UserRoute);
 app.use("/api/Courses", CourseRoute);
