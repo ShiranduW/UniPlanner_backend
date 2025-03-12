@@ -5,6 +5,7 @@ import { CourseRoute } from "./api/courses.js";
 import { ScheduleRoute } from "./api/schedules.js";
 import { TimeTableRoute } from "./api/timetable.js";
 import { connectDB } from "./insfastructure/db.js";
+import helmet from "helmet";
 
 const app = express();
 app.use(express.json());
@@ -13,7 +14,7 @@ app.use(cors({
 }));
 
 // Add CSP Headers in Express
-import helmet from "helmet";
+
 
 app.use(
   helmet({
